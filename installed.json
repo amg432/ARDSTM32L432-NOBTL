@@ -1,0 +1,49 @@
+{
+  "packages": [
+    {
+      "name": "ARDSTM32L432",
+      "maintainer": "IOT",
+      "websiteUrl": "https://github.com/amg432/ARDSTM32L432",
+      "Url": "https://github.com/amg432/ARDSTM32L432PACK/blob/main/package_STM32L432_boards_index.json",
+      "email": "amg432@gmail.com",
+      "platforms": [
+        {
+          "name": "STM32L4 Boards",
+          "architecture": "stm32l4",
+          "version": "0.0.1",
+          "deprecated": false,
+          "category": "Contributed",
+          "url": "https://github.com/amg432/ARDSTM32L432/archive/0.0.1.tar.gz",
+          "archiveFileName": "0.0.1.tar.gz",
+          "checksum": "MD5:b12ab87a9cce11f61ad22c2f291d5ed7",
+          "size": "15046882",
+          "boards": [
+            {
+              "name": "ARDSTM32L432KC"
+            },
+            {
+              "name": "NUCLEO-L432KC"
+            }
+          ],
+          "help": {
+            "online": "https://github.com/amg432/ARDSTM32L432/issues"
+          },
+          "toolsDependencies": [
+            {
+              "packager": "arduino",
+              "name": "arm-none-eabi-gcc",
+              "version": "4.8.3-2014q1"
+            }
+          ],
+          "discoveryDependencies": [],
+          "monitorDependencies": []
+        }
+      ],
+      "tools": [],
+      "help": {
+        "online": "https://github.com/amg432/ARDSTM32L432/issues"
+      }
+    }
+  ],
+  "IsTrusted": false
+}

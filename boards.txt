@@ -1,0 +1,157 @@
+menu.usb=USB Type
+menu.dosfs=DOSFS
+menu.speed=CPU Speed
+menu.opt=Optimize
+
+##############################################################
+
+# IoT Boards
+# ---------------------------------------
+ARDSTM32L432KC.name=ARDSTM32L432KC
+ARDSTM32L432KC.vid.0=0x1209
+ARDSTM32L432KC.pid.0=0x6669
+
+ARDSTM32L432KC.upload.tool=stm32l4_dfu
+ARDSTM32L432KC.upload.protocol=dfu
+ARDSTM32L432KC.upload.maximum_size=245760
+ARDSTM32L432KC.upload.use_1200bps_touch=true
+ARDSTM32L432KC.upload.wait_for_upload_port=false
+ARDSTM32L432KC.upload.native_usb=false
+
+ARDSTM32L432KC.build.mcu=cortex-m4
+ARDSTM32L432KC.build.f_cpu=80000000L
+ARDSTM32L432KC.build.board=ARDSTM32L432
+ARDSTM32L432KC.build.arch=STM32L4
+ARDSTM32L432KC.build.core=stm32l4
+ARDSTM32L432KC.build.vid=0x1209
+ARDSTM32L432KC.build.pid=0x6669
+ARDSTM32L432KC.build.did=0xffff
+ARDSTM32L432KC.build.usb_manufacturer="IOT"
+ARDSTM32L432KC.build.usb_product="ARDSTM32L432"
+ARDSTM32L432KC.build.extra_flags=-DSTM32L432xx -D__FPU_PRESENT=1 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mabi=aapcs -mslow-flash-data -fsingle-precision-constant {build.usb_flags} {build.dosfs_flags}
+ARDSTM32L432KC.build.ldscript=linker_scripts/STM32L432KC_FLASH.ld
+ARDSTM32L432KC.build.openocdscript=openocd_scripts/stm32l432kc_ladybug.cfg
+ARDSTM32L432KC.build.variant=ARDSTM32L432KC
+ARDSTM32L432KC.build.variant_system_libs="-L{runtime.platform.path}/system/STM32L4xx/Lib" "-L{runtime.platform.path}/system/CMSIS/Lib" -lstm32l432 -larm_cortexM4lf_math
+ARDSTM32L432KC.build.variant_system_include="-I{runtime.platform.path}/system/CMSIS/Include" "-I{runtime.platform.path}/system/CMSIS/Device/ST/STM32L4xx/Include" "-I{runtime.platform.path}/system/STM32L4xx/Include" 
+
+ARDSTM32L432KC.menu.usb.cdc=Serial
+ARDSTM32L432KC.menu.usb.cdc.build.usb_type=USB_TYPE_CDC
+ARDSTM32L432KC.menu.usb.cdc_msc=Serial + Mass Storage
+ARDSTM32L432KC.menu.usb.cdc_msc.build.usb_type=USB_TYPE_CDC_MSC
+ARDSTM32L432KC.menu.usb.cdc_hid=Serial + Keyboard + Mouse
+ARDSTM32L432KC.menu.usb.cdc_hid.build.usb_type=USB_TYPE_CDC_HID
+ARDSTM32L432KC.menu.usb.cdc_msc_hid=Serial + Mass Storage + Keyboard + Mouse
+ARDSTM32L432KC.menu.usb.cdc_msc_hid.build.usb_type=USB_TYPE_CDC_MSC_HID
+ARDSTM32L432KC.menu.usb.none=No USB
+ARDSTM32L432KC.menu.usb.none.build.usb_type=USB_TYPE_NONE
+
+ARDSTM32L432KC.menu.dosfs.none=None
+ARDSTM32L432KC.menu.dosfs.none.build.dosfs_sdcard=0
+ARDSTM32L432KC.menu.dosfs.none.build.dosfs_sflash=0
+ARDSTM32L432KC.menu.dosfs.sdspi=SDCARD (SPI)
+ARDSTM32L432KC.menu.dosfs.sdspi.build.dosfs_sdcard=1
+ARDSTM32L432KC.menu.dosfs.sdspi.build.dosfs_sflash=0
+
+ARDSTM32L432KC.menu.speed.80=80 MHz
+ARDSTM32L432KC.menu.speed.80.build.f_cpu=80000000L
+ARDSTM32L432KC.menu.speed.72=72 MHz
+ARDSTM32L432KC.menu.speed.72.build.f_cpu=72000000L
+ARDSTM32L432KC.menu.speed.64=64 MHz
+ARDSTM32L432KC.menu.speed.64.build.f_cpu=64000000L
+ARDSTM32L432KC.menu.speed.48=48 MHz
+ARDSTM32L432KC.menu.speed.48.build.f_cpu=48000000L
+ARDSTM32L432KC.menu.speed.32=32 MHz
+ARDSTM32L432KC.menu.speed.32.build.f_cpu=32000000L
+ARDSTM32L432KC.menu.speed.24=24 MHz
+ARDSTM32L432KC.menu.speed.24.build.f_cpu=24000000L
+ARDSTM32L432KC.menu.speed.16=16 MHz (No USB)
+ARDSTM32L432KC.menu.speed.16.build.f_cpu=16000000L
+ARDSTM32L432KC.menu.speed.8=8 MHz (No USB)
+ARDSTM32L432KC.menu.speed.8.build.f_cpu=8000000L
+ARDSTM32L432KC.menu.speed.4=4 MHz (No USB)
+ARDSTM32L432KC.menu.speed.4.build.f_cpu=4000000L
+ARDSTM32L432KC.menu.speed.2=2 MHz (No USB)
+ARDSTM32L432KC.menu.speed.2.build.f_cpu=2000000L
+ARDSTM32L432KC.menu.speed.1=1 MHz (No USB)
+ARDSTM32L432KC.menu.speed.1.build.f_cpu=1000000L
+
+ARDSTM32L432KC.menu.opt.os=Smallest Code
+ARDSTM32L432KC.menu.opt.os.build.flags.optimize=-Os
+ARDSTM32L432KC.menu.opt.os.build.flags.ldspecs=--specs=nano.specs
+ARDSTM32L432KC.menu.opt.o1=Fast
+ARDSTM32L432KC.menu.opt.o1.build.flags.optimize=-O1
+ARDSTM32L432KC.menu.opt.o1.build.flags.ldspecs=
+ARDSTM32L432KC.menu.opt.o2=Faster
+ARDSTM32L432KC.menu.opt.o2.build.flags.optimize=-O2
+ARDSTM32L432KC.menu.opt.o2.build.flags.ldspecs=
+ARDSTM32L432KC.menu.opt.o3=Fastest
+ARDSTM32L432KC.menu.opt.o3.build.flags.optimize=-O3
+ARDSTM32L432KC.menu.opt.o3.build.flags.ldspecs=
+
+
+# ST NUCLEO-L432KC
+# ---------------------------------------
+NUCLEO-L432KC.name=NUCLEO-L432KC
+NUCLEO-L432KC.vid.0=0x0483
+NUCLEO-L432KC.pid.0=0x374b
+
+NUCLEO-L432KC.upload.tool=stm32l4_openocd
+NUCLEO-L432KC.upload.protocol=stlink
+NUCLEO-L432KC.upload.maximum_size=245760
+NUCLEO-L432KC.upload.use_1200bps_touch=true
+NUCLEO-L432KC.upload.wait_for_upload_port=false
+NUCLEO-L432KC.upload.native_usb=false
+
+NUCLEO-L432KC.build.mcu=cortex-m4
+NUCLEO-L432KC.build.f_cpu=80000000L
+NUCLEO-L432KC.build.board=STM32L4_NUCLEO
+NUCLEO-L432KC.build.arch=STM32L4
+NUCLEO-L432KC.build.core=stm32l4
+NUCLEO-L432KC.build.vid=0x0483
+NUCLEO-L432KC.build.pid=0x374b
+NUCLEO-L432KC.build.did=0xffff
+NUCLEO-L432KC.build.extra_flags=-DSTM32L432xx -D__FPU_PRESENT=1 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mabi=aapcs -mslow-flash-data -fsingle-precision-constant {build.usb_flags}
+NUCLEO-L432KC.build.ldscript=linker_scripts/STM32L432KC_FLASH.ld
+NUCLEO-L432KC.build.openocdscript=openocd_scripts/stm32l432kc_nucleo.cfg
+NUCLEO-L432KC.build.variant=STM32L432KC-NUCLEO
+NUCLEO-L432KC.build.variant_system_libs="-L{runtime.platform.path}/system/STM32L4xx/Lib" "-L{runtime.platform.path}/system/CMSIS/Lib" -lstm32l432 -larm_cortexM4lf_math
+NUCLEO-L432KC.build.variant_system_include="-I{runtime.platform.path}/system/CMSIS/Include" "-I{runtime.platform.path}/system/CMSIS/Device/ST/STM32L4xx/Include" "-I{runtime.platform.path}/system/STM32L4xx/Include" 
+
+NUCLEO-L432KC.menu.speed.80=80 MHz
+NUCLEO-L432KC.menu.speed.80.build.f_cpu=80000000L
+NUCLEO-L432KC.menu.speed.72=72 MHz
+NUCLEO-L432KC.menu.speed.72.build.f_cpu=72000000L
+NUCLEO-L432KC.menu.speed.64=64 MHz
+NUCLEO-L432KC.menu.speed.64.build.f_cpu=64000000L
+NUCLEO-L432KC.menu.speed.48=48 MHz
+NUCLEO-L432KC.menu.speed.48.build.f_cpu=48000000L
+NUCLEO-L432KC.menu.speed.32=32 MHz
+NUCLEO-L432KC.menu.speed.32.build.f_cpu=32000000L
+NUCLEO-L432KC.menu.speed.24=24 MHz
+NUCLEO-L432KC.menu.speed.24.build.f_cpu=24000000L
+NUCLEO-L432KC.menu.speed.16=16 MHz
+NUCLEO-L432KC.menu.speed.16.build.f_cpu=16000000L
+NUCLEO-L432KC.menu.speed.8=8 MHz
+NUCLEO-L432KC.menu.speed.8.build.f_cpu=8000000L
+NUCLEO-L432KC.menu.speed.4=4 MHz
+NUCLEO-L432KC.menu.speed.4.build.f_cpu=4000000L
+NUCLEO-L432KC.menu.speed.2=2 MHz
+NUCLEO-L432KC.menu.speed.2.build.f_cpu=2000000L
+NUCLEO-L432KC.menu.speed.1=1 MHz
+NUCLEO-L432KC.menu.speed.1.build.f_cpu=1000000L
+
+NUCLEO-L432KC.menu.opt.os=Smallest Code
+NUCLEO-L432KC.menu.opt.os.build.flags.optimize=-Os
+NUCLEO-L432KC.menu.opt.os.build.flags.ldspecs=--specs=nano.specs
+NUCLEO-L432KC.menu.opt.o1=Fast
+NUCLEO-L432KC.menu.opt.o1.build.flags.optimize=-O1
+NUCLEO-L432KC.menu.opt.o1.build.flags.ldspecs=
+NUCLEO-L432KC.menu.opt.o2=Faster
+NUCLEO-L432KC.menu.opt.o2.build.flags.optimize=-O2
+NUCLEO-L432KC.menu.opt.o2.build.flags.ldspecs=
+NUCLEO-L432KC.menu.opt.o3=Fastest
+NUCLEO-L432KC.menu.opt.o3.build.flags.optimize=-O3
+NUCLEO-L432KC.menu.opt.o3.build.flags.ldspecs=
+
+
