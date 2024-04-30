@@ -7,7 +7,7 @@ menu.opt=Optimize
 
 # IoT Boards
 # ---------------------------------------
-ARDSTM32L432KC_NOBTL.name=ARDSTM32L432KC-NOBTL
+ARDSTM32L432KC_NOBTL.name=STM32L432KC-IOT
 ARDSTM32L432KC_NOBTL.vid.0=0x1209
 ARDSTM32L432KC_NOBTL.pid.0=0x6669
 
@@ -20,18 +20,18 @@ ARDSTM32L432KC_NOBTL.upload.native_usb=false
 
 ARDSTM32L432KC_NOBTL.build.mcu=cortex-m4
 ARDSTM32L432KC_NOBTL.build.f_cpu=80000000L
-ARDSTM32L432KC_NOBTL.build.board=ARDSTM32L432
+ARDSTM32L432KC_NOBTL.build.board=STM32L432-IOT
 ARDSTM32L432KC_NOBTL.build.arch=STM32L4
 ARDSTM32L432KC_NOBTL.build.core=stm32l4
 ARDSTM32L432KC_NOBTL.build.vid=0x1209
 ARDSTM32L432KC_NOBTL.build.pid=0x6669
 ARDSTM32L432KC_NOBTL.build.did=0xffff
 ARDSTM32L432KC_NOBTL.build.usb_manufacturer="IOT"
-ARDSTM32L432KC_NOBTL.build.usb_product="ARDSTM32L432"
+ARDSTM32L432KC_NOBTL.build.usb_product="STM32L432-IOT"
 ARDSTM32L432KC_NOBTL.build.extra_flags=-DSTM32L432xx -D__FPU_PRESENT=1 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mabi=aapcs -mslow-flash-data -fsingle-precision-constant {build.usb_flags} {build.dosfs_flags}
 ARDSTM32L432KC_NOBTL.build.ldscript=linker_scripts/STM32L432KC_FLASH.ld
-ARDSTM32L432KC_NOBTL.build.openocdscript=openocd_scripts/stm32l432kc_ladybug.cfg
-ARDSTM32L432KC_NOBTL.build.variant=ARDSTM32L432KC_NOBTL
+ARDSTM32L432KC_NOBTL.build.openocdscript=openocd_scripts/stm32l432kc_iot.cfg
+ARDSTM32L432KC_NOBTL.build.variant=STM32L432KC-IOT
 ARDSTM32L432KC_NOBTL.build.variant_system_libs="-L{runtime.platform.path}/system/STM32L4xx/Lib" "-L{runtime.platform.path}/system/CMSIS/Lib" -lstm32l432 -larm_cortexM4lf_math
 ARDSTM32L432KC_NOBTL.build.variant_system_include="-I{runtime.platform.path}/system/CMSIS/Include" "-I{runtime.platform.path}/system/CMSIS/Device/ST/STM32L4xx/Include" "-I{runtime.platform.path}/system/STM32L4xx/Include" 
 
