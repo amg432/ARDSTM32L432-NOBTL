@@ -1,5 +1,5 @@
 #TOOLS    = /opt/gcc-arm-none-eabi-4.8.3-2014q1
-TOOLS	 = /drives/d/shared_folder/gcc-arm-none-eabi-4.8.3-2014q1
+TOOLS	 = /opt/gcc-arm-none-eabi-4.8.3-2014q1
 CPP      = $(TOOLS)/bin/arm-none-eabi-cpp
 CC       = $(TOOLS)/bin/arm-none-eabi-gcc
 CXX      = $(TOOLS)/bin/arm-none-eabi-g++
@@ -87,6 +87,9 @@ BOBJS_L432 = $(patsubst %.c,_out/stm32l432/%.o,$(BSRCS))
 LSRCS_L432 = $(LSRCS) startup_stm32l432xx.S
 LOBJS_L432 = $(patsubst %.c,_out/stm32l432/%.o,$(filter-out %.S,$(LSRCS_L432))) $(patsubst %.S,_out/stm32l432/%.o,$(filter-out %.c,$(LSRCS_L432)))
 
+RELEASE_DIR = ../Lib
+RELEASE_FILES = boot_stm32l432.o libstm32l432.a
+
 all:: boot_stm32l432.o libstm32l432.a
 
 boot_stm32l432.o:: $(BOBJS_L432)
@@ -102,6 +105,9 @@ _out/stm32l432/%.o: %.c
 _out/stm32l432/%.o: %.S
 	-@mkdir -p $(dir $@)
 	$(CC) -DSTM32L432xx $(ASFLAGS) -c $< -o $@
+
+release: $(RELEASE_FILES)
+	mkdir -p ../Lib; for u in $(RELEASE_FILES); do echo $$u; cp -f $$u $(RELEASE_DIR); done
 
 clean::
 	rm -rf boot_stm32l432.o libstm32l432.a _out
