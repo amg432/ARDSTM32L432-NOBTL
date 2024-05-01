@@ -37,15 +37,10 @@ static void default_irq_stm32l4xx(void);
 void reset_stm32l4xx(void);
 
 const __attribute__((section(".isr_vector"))) uint32_t vectors_stm32l4xx[16] = {
-#if defined(STM32L432xx) || defined(STM32L433xx)
+#if defined(STM32L432xx)
     0x2000c000,                        /* Top of Stack */
-#endif /* defined(STM32L432xx) || defined(STM32L433xx) */
-#if defined(STM32L476xx)
-    0x20018000,                        /* Top of Stack */
-#endif /* defined(STM32L496xx) */
-#if defined(STM32L496xx)
-    0x20040000,                        /* Top of Stack */
-#endif /* defined(STM32L496xx) */
+#endif /* defined(STM32L432xx) */
+
     (uint32_t)&reset_stm32l4xx,        /* Reset Handler */
     (uint32_t)&default_irq_stm32l4xx,  /* NMI Handler */
     (uint32_t)&default_irq_stm32l4xx,  /* Hard Fault Handler */
@@ -76,7 +71,7 @@ __attribute__((naked)) void reset_stm32l4xx(void)
 
     RCC->APB2ENR |= RCC_APB2ENR_SYSCFGEN;
 
-#if defined(STM32L432xx) || defined(STM32L433xx) || defined(STM32L496xx)
+#if defined(STM32L432xx)
     RCC->APB1ENR1 |= RCC_APB1ENR1_RTCAPBEN;
 #endif
 
@@ -131,19 +126,13 @@ __attribute__((naked)) void reset_stm32l4xx(void)
 	GPIOB->LCKR = 0x0000ffff;
 	GPIOB->LCKR = 0x0001ffff;
 	GPIOB->LCKR;
-#if defined(STM32L433xx) || defined(STM32L476xx) || defined(STM32L496xx)
-	GPIOC->LCKR = 0x00011fff;
-	GPIOC->LCKR = 0x00001fff;
-	GPIOC->LCKR = 0x00011fff;
-	GPIOC->LCKR;
-#endif
 #if defined(STM32L432xx)
 	RCC->AHB2ENR &= ~(RCC_AHB2ENR_GPIOAEN | RCC_AHB2ENR_GPIOBEN);
 #else
 	RCC->AHB2ENR &= ~(RCC_AHB2ENR_GPIOAEN | RCC_AHB2ENR_GPIOBEN | RCC_AHB2ENR_GPIOCEN); 
 #endif
 
-#if defined(STM32L432xx) || defined(STM32L433xx) || defined(STM32L496xx)
+#if defined(STM32L432xx)
 	RCC->APB1ENR1 &= ~RCC_APB1ENR1_RTCAPBEN;
 #endif
 

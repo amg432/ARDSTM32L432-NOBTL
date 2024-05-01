@@ -38,15 +38,6 @@ extern const stm32l4_iap_prefix_t stm32l4_iap_prefix;
 #if defined(STM32L432xx)
 static const char stm32l4_iap_signature[11] = "STM32L432xx";
 #endif
-#if defined(STM32L433xx)
-static const char stm32l4_iap_signature[11] = "STM32L433xx";
-#endif
-#if defined(STM32L476xx)
-static const char stm32l4_iap_signature[11] = "STM32L476xx";
-#endif
-#if defined(STM32L496xx)
-static const char stm32l4_iap_signature[11] = "STM32L496xx";
-#endif
 
 /*
  * void stm32l4_iap_do_erase(void)
@@ -158,10 +149,7 @@ static void stm32l4_iap_erase(uint32_t address, uint32_t address_e)
 {
     unsigned int i;
     const uint32_t flash_base = FLASH_BASE;
-#if defined(STM32L476xx) || defined(STM32L496xx)
-    const uint32_t flash_size = (*((volatile uint16_t*)0x1fff75e0) * 1024);
-    const uint32_t flash_split = (flash_base + (flash_size >> 1));
-#endif /* defined(STM32L476xx) || defined(STM32L496xx) */
+
     uint16_t iap_do_erase[STM32L4_IAP_DO_ERASE_SIZE];
 
     for (i = 0; i < STM32L4_IAP_DO_ERASE_SIZE; i++)
@@ -173,13 +161,7 @@ static void stm32l4_iap_erase(uint32_t address, uint32_t address_e)
     
     do
     {
-#if defined(STM32L476xx) || defined(STM32L496xx)
-	if (address >= flash_split)
-	{
-	    FLASH->CR = FLASH_CR_PER | FLASH_CR_BKER | ((((address - flash_split) / 2048) << 3) & FLASH_CR_PNB);
-	}
-	else
-#endif /* defined(STM32L476xx) || defined(STM32L496xx) */
+
 	{
 	    FLASH->CR = FLASH_CR_PER | ((((address - flash_base) / 2048) << 3) & FLASH_CR_PNB);
 	}
