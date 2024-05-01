@@ -28,8 +28,6 @@
 
 #include "armv7m.h"
 
-#include "stm32l476xx.h"
-
 typedef struct _armv7m_core_control_t {
     uint32_t               clock;
     uint32_t               scale;

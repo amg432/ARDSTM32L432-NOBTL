@@ -30,8 +30,6 @@
 
 #include "armv7m.h"
 
-#include "stm32l476xx.h"
-
 typedef struct _armv7m_timer_control_t {
     struct _armv7m_timer_t *next;
     struct _armv7m_timer_t *previous;
